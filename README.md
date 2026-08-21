@@ -57,6 +57,12 @@ docker run -d --name nexus-node -p 8080:8080 \
   aoxendine3/sovra-nexus
 ```
 
+
+## 💎 Elite Adopter Allocation (First 1,000 Nodes)
+We are releasing a highly exclusive discount allocation for the first 1,000 enterprise nodes deployed. 
+- **The Guarantee:** Every deployment in this initial allocation includes a guaranteed, direct engineering review of your service and build by the core Xoras team to ensure flawless integration and absolute cognitive containment.
+- **Status:** [ALLOCATION ACTIVE]
+
 ## 🛡️ The Xoras Guarantee
 If your startup relies on a highly-engineered system prompt, you are one injection attack away from losing your entire business model. Do not just host an AI. Give it a secure body, an immune system, and a memory, and let it work in absolute sovereignty.
 
