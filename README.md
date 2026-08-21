@@ -63,6 +63,24 @@ We are releasing a highly exclusive discount allocation for the first 1,000 ente
 - **The Requirement:** In exchange for this massive early-adopter discount, you guarantee to provide a comprehensive public review of our service, architecture, and build quality after deployment.
 - **Status:** [ALLOCATION ACTIVE]
 
+
+## ❓ Engineering FAQ
+
+**Q: Is this a cloud wrapper, or is it fully self-contained?**
+**A:** SOVRA.NEXUS is a completely self-contained deployment package. It bundles the required runtime dependencies, the Qdrant memory fabric, the Semantic Firewall, and the local AI inferencing models into a single isolated enclave, requiring minimal configuration from the customer.
+
+**Q: How does the Motor Cortex securely ingest corporate API credentials?**
+**A:** NEXUS supports standard enterprise secret management. Credentials for outbound proxy actions are injected securely via isolated environment variables or Docker secrets at runtime and are never logged to disk.
+
+**Q: Does the agent's memory persist if the Docker daemon restarts?**
+**A:** Yes. The Qdrant vector database is explicitly mounted to a persistent Docker volume (`nexus-qdrant-data`). If the container restarts or undergoes an update, the agent retains its full cognitive history.
+
+**Q: What are the supported operating systems?**
+**A:** The container runs natively on any OS supporting the Docker daemon (Linux, macOS, Windows via WSL2). 
+
+**Q: How are updates, rollbacks, and failure recoveries handled?**
+**A:** Updates are delivered as immutable Docker image tags. To update, pull the latest tag and recreate the container. A rollback is executed by simply reverting the tag. The persistent volume mount ensures memory is entirely isolated from image rollbacks and failure recoveries.
+
 ## 🛡️ The Xoras Guarantee
 If your startup relies on a highly-engineered system prompt, you are one injection attack away from losing your entire business model. Do not just host an AI. Give it a secure body, an immune system, and a memory, and let it work in absolute sovereignty.
 
