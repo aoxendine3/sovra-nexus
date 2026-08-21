@@ -1,0 +1,42 @@
+version: '3.8'
+
+services:
+  nexus-brain:
+    build: .
+    container_name: sovra-nexus-node
+    ports:
+      - "8080:8080"
+    environment:
+      - SOVRA_ZERO_POINT_SECRET=${SOVRA_ZERO_POINT_SECRET:-default_dev_secret_override}
+      - REDIS_HOST=nexus-lock
+      - QDRANT_HOST=nexus-memory
+    depends_on:
+      - nexus-lock
+      - nexus-memory
+    networks:
+      - nexus-enclave
+
+  nexus-lock:
+    image: redis:alpine
+    container_name: sovra-nexus-redis
+    expose:
+      - "6379"
+    networks:
+      - nexus-enclave
+
+  nexus-memory:
+    image: qdrant/qdrant:latest
+    container_name: sovra-nexus-qdrant
+    expose:
+      - "6333"
+    volumes:
+      - nexus-qdrant-data:/qdrant/storage
+    networks:
+      - nexus-enclave
+
+volumes:
+  nexus-qdrant-data:
+
+networks:
+  nexus-enclave:
+    driver: bridge
